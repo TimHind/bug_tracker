@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug</title>
+</head>
+<body>
+    <a href="/addticket/">Create</a>  <a href="logout">Logout</a>
+    <h1>BugTracker</h1>
+    <h3>New Tickets</h3>
+    {% for post in tickets %}
+    {% if post.status == 'new' %}
+        <li>
+            <a href="/ticket/{{post.id}}/">{{ post.title }}</a>
+            {{ post.id }}
+            <a href="/auth/{{post.filedby}}">{{ post.filedby }}</a>
+            {{ post.time }}
+        </li>
+    {% endif %}
+    {% endfor %}
+    <h3>Inprogress Tickets</h3>
+    {% for post in tickets %}
+    {% if post.status == 'In-progress' %}
+        <li>
+            <a href="/ticket/{{post.id}}/">{{ post.title }}</a>
+            {{ post.id }}
+            <a href="/auth/{{post.filedby}}">{{ post.filedby }}</a>
+            {{ post.time }}
+        </li>
+    {% endif %}
+    {% endfor %}
+    <h3>Done Tickets</h3>
+    {% for post in tickets %}
+    {% if post.status == 'Done' %}
+        <li>
+            <a href="/ticket/{{post.id}}/">{{ post.title }}</a>
+            {{ post.id }}
+            <a href="/auth/{{post.filedby}}">{{ post.filedby }}</a>
+            {{ post.time }}
+        </li>
+    {% endif %}
+    {% endfor %}
+    <h3>Invalid Tickets</h3>
+    {% for post in tickets %}
+    {% if post.status == 'Invalid' %}
+        <li>
+            <a href="/ticket/{{post.id}}/">{{ post.title }}</a>
+            {{ post.id }}
+            <a href="/auth/{{post.filedby}}">{{ post.filedby }}</a>
+            {{ post.time }}
+        </li>
+    {% endif %}
+    {% endfor %}
+</body>
+</html>

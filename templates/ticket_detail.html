@@ -1,0 +1,31 @@
+<a href="/">Home</a> <a href="{{form.id}}/edit">Edit</a>
+<div class="container">
+    {% if not post %}
+        <h1>the post you're looking for isn't here at the moment</h1>
+    {% else %}
+        <h2>{{ post.title }}</h2>
+        <h4>Reported By: <a href="/auth/{{post.filedby.id}}">{{ post.filedby }}</a></h4>
+        <p>Description: {{ post.description }}</p>
+        <p>Status - {{ post.status }}</p>
+        <p>Time - {{ post.time }}</p>
+        <p>Completed By: {{post.completedby}}</p>
+        <p>Assigned To: {{post.assignedto}}</p>
+    {% endif %}
+
+    <form action="{% url 'completed' post.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit", name="post_id", value="{{ post.id }}">Complete</button>
+    </form>
+
+    <form action="{% url 'assign' post.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit", name="post_id", value="{{ post.id }}">Assign!</button>
+    </form>
+
+    <form action="{% url 'invalid' post.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit", name="post_id", value="{{ post.id }}">Set as invalid</button>
+    </form>
+
+
+</div>

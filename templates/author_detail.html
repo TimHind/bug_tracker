@@ -1,0 +1,63 @@
+<a href="/">Home</a>  <a href="/addticket/">Create</a>  <a href="logout">Logout</a>
+<div class="container">
+    <div style="border:solid 1px black">
+        <h2>Username: {{ auth.filedby.username }}</h2>
+        <h2>Email: {{ auth.filedby.email }}</h2>
+        <h2>Bio: {{ auth.filedby.bio }}</h2>
+    </div>
+
+    <h3>File Tickets</h3>
+    {% for post in tickets %}
+        <li>
+            <a href="/ticket/{{post.id}}/">{{ post.title }}</a>
+            {{ post.id }}
+            <a href="/auth/{{post.filedby.id}}">{{ post.filedby }}</a>
+            {{ post.time }}
+        </li>
+    {% endfor %}
+    <h3>New Tickets</h3>
+    {% for post in tickets %}
+    {% if post.status == 'new' %}
+        <li>
+            <a href="/ticket/{{post.id}}/">{{ post.title }}</a>
+            {{ post.id }}
+            <a href="/auth/{{post.filedby.id}}">{{ post.filedby }}</a>
+            {{ post.time }}
+        </li>
+    {% endif %}
+    {% endfor %}
+    <h3>Inprogress Tickets</h3>
+    {% for post in tickets %}
+    {% if post.status == 'In-progress' %}
+        <li>
+            <a href="/ticket/{{post.id}}/">{{ post.title }}</a>
+            {{ post.id }}
+            <a href="/auth/{{post.filedby.id}}">{{ post.filedby }}</a>
+            {{ post.time }}
+        </li>
+    
+    {% endif %}
+    {% endfor %}
+    <h3>Done Tickets</h3>
+    {% for post in tickets %}
+    {% if post.status == 'Done' %}
+        <li>
+            <a href="/ticket/{{post.id}}/">{{ post.title }}</a>
+            {{ post.id }}
+            <a href="/auth/{{post.filedby.id}}">{{ post.filedby }}</a>
+            {{ post.time }}
+        </li>
+    {% endif %}
+    {% endfor %}
+    <h3>Invalid Tickets</h3>
+    {% for post in tickets %}
+    {% if post.status == 'Invalid' %}
+        <li>
+            <a href="/ticket/{{post.id}}/">{{ post.title }}</a>
+            {{ post.id }}
+            <a href="/auth/{{post.filedby.id}}">{{ post.filedby }}</a>
+            {{ post.time }}
+        </li>
+    {% endif %}
+    {% endfor %}
+</div>
