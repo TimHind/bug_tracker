@@ -1,8 +1,9 @@
-<a href="/">Home</a> <a href="{{form.id}}/edit">Edit</a>
+
 <div class="container">
     {% if not post %}
         <h1>the post you're looking for isn't here at the moment</h1>
     {% else %}
+        <a href="/">Home</a> <a href="/ticket/{{post.id}}/edit">Edit</a>
         <h2>{{ post.title }}</h2>
         <h4>Reported By: <a href="/auth/{{post.filedby.id}}">{{ post.filedby }}</a></h4>
         <p>Description: {{ post.description }}</p>
